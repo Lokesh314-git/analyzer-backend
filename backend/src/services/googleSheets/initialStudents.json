@@ -1,0 +1,380 @@
+[
+  {
+    "slNo": 1,
+    "rollNumber": "TU6243202111001",
+    "registerNumber": "TU6243202111001",
+    "name": "Abitha E",
+    "department": "BSC CS AI&ML"
+  },
+  {
+    "slNo": 2,
+    "rollNumber": "TU6243202111002",
+    "registerNumber": "TU6243202111002",
+    "name": "Anantha Jothi L",
+    "department": "BSC CS AI&ML"
+  },
+  {
+    "slNo": 3,
+    "rollNumber": "TU6243202111003",
+    "registerNumber": "TU6243202111003",
+    "name": "Anbarasan D",
+    "department": "BSC CS AI&ML"
+  },
+  {
+    "slNo": 4,
+    "rollNumber": "TU6243202111004",
+    "registerNumber": "TU6243202111004",
+    "name": "Anbukkumaran A",
+    "department": "BSC CS AI&ML"
+  },
+  {
+    "slNo": 5,
+    "rollNumber": "TU6243202111005",
+    "registerNumber": "TU6243202111005",
+    "name": "Aniesh P",
+    "department": "BSC CS AI&ML"
+  },
+  {
+    "slNo": 6,
+    "rollNumber": "TU6243202111006",
+    "registerNumber": "TU6243202111006",
+    "name": "Aravindh V",
+    "department": "BSC CS AI&ML"
+  },
+  {
+    "slNo": 7,
+    "rollNumber": "TU6243202111007",
+    "registerNumber": "TU6243202111007",
+    "name": "Arun Karthigeyan S",
+    "department": "BSC CS AI&ML"
+  },
+  {
+    "slNo": 8,
+    "rollNumber": "TU6243202111008",
+    "registerNumber": "TU6243202111008",
+    "name": "Avanthi Kumar S",
+    "department": "BSC CS AI&ML"
+  },
+  {
+    "slNo": 9,
+    "rollNumber": "TU6243202111009",
+    "registerNumber": "TU6243202111009",
+    "name": "Beauti Kumari V",
+    "department": "BSC CS AI&ML"
+  },
+  {
+    "slNo": 10,
+    "rollNumber": "TU6243202111010",
+    "registerNumber": "TU6243202111010",
+    "name": "Bharath Kumar D",
+    "department": "BSC CS AI&ML"
+  },
+  {
+    "slNo": 11,
+    "rollNumber": "TU6243202111011",
+    "registerNumber": "TU6243202111011",
+    "name": "Bhuvaneshwari P",
+    "department": "BSC CS AI&ML"
+  },
+  {
+    "slNo": 12,
+    "rollNumber": "TU6243202111012",
+    "registerNumber": "TU6243202111012",
+    "name": "Chanduru S",
+    "department": "BSC CS AI&ML"
+  },
+  {
+    "slNo": 13,
+    "rollNumber": "TU6243202111013",
+    "registerNumber": "TU6243202111013",
+    "name": "Chinna Reddy K",
+    "department": "BSC CS AI&ML"
+  },
+  {
+    "slNo": 14,
+    "rollNumber": "TU6243202111014",
+    "registerNumber": "TU6243202111014",
+    "name": "Deepika S",
+    "department": "BSC CS AI&ML"
+  },
+  {
+    "slNo": 15,
+    "rollNumber": "TU6243202111015",
+    "registerNumber": "TU6243202111015",
+    "name": "Dhanasriram B",
+    "department": "BSC CS AI&ML"
+  },
+  {
+    "slNo": 16,
+    "rollNumber": "TU6243202111017",
+    "registerNumber": "TU6243202111017",
+    "name": "Farzana K",
+    "department": "BSC CS AI&ML"
+  },
+  {
+    "slNo": 17,
+    "rollNumber": "TU6243202111018",
+    "registerNumber": "TU6243202111018",
+    "name": "Gokul V",
+    "department": "BSC CS AI&ML"
+  },
+  {
+    "slNo": 18,
+    "rollNumber": "TU6243202111020",
+    "registerNumber": "TU6243202111020",
+    "name": "Harini T",
+    "department": "BSC CS AI&ML"
+  },
+  {
+    "slNo": 19,
+    "rollNumber": "TU6243202111021",
+    "registerNumber": "TU6243202111021",
+    "name": "Iyyappan V",
+    "department": "BSC CS AI&ML"
+  },
+  {
+    "slNo": 20,
+    "rollNumber": "TU6243202111022",
+    "registerNumber": "TU6243202111022",
+    "name": "Jaffar malik . B L",
+    "department": "BSC CS AI&ML"
+  },
+  {
+    "slNo": 21,
+    "rollNumber": "TU6243202111023",
+    "registerNumber": "TU6243202111023",
+    "name": "Janani G",
+    "department": "BSC CS AI&ML"
+  },
+  {
+    "slNo": 22,
+    "rollNumber": "TU6243202111024",
+    "registerNumber": "TU6243202111024",
+    "name": "Jeevarathinam V",
+    "department": "BSC CS AI&ML"
+  },
+  {
+    "slNo": 23,
+    "rollNumber": "TU6243202111025",
+    "registerNumber": "TU6243202111025",
+    "name": "Keerthana R",
+    "department": "BSC CS AI&ML"
+  },
+  {
+    "slNo": 24,
+    "rollNumber": "TU6243202111026",
+    "registerNumber": "TU6243202111026",
+    "name": "Keerthana V",
+    "department": "BSC CS AI&ML"
+  },
+  {
+    "slNo": 25,
+    "rollNumber": "TU6243202111027",
+    "registerNumber": "TU6243202111027",
+    "name": "Keerthivasan A",
+    "department": "BSC CS AI&ML"
+  },
+  {
+    "slNo": 26,
+    "rollNumber": "TU6243202111028",
+    "registerNumber": "TU6243202111028",
+    "name": "Kishore G",
+    "department": "BSC CS AI&ML"
+  },
+  {
+    "slNo": 27,
+    "rollNumber": "TU6243202111029",
+    "registerNumber": "TU6243202111029",
+    "name": "Lokesh A",
+    "department": "BSC CS AI&ML"
+  },
+  {
+    "slNo": 28,
+    "rollNumber": "TU6243202111030",
+    "registerNumber": "TU6243202111030",
+    "name": "Manoj S",
+    "department": "BSC CS AI&ML"
+  },
+  {
+    "slNo": 29,
+    "rollNumber": "TU6243202111031",
+    "registerNumber": "TU6243202111031",
+    "name": "Manojan S",
+    "department": "BSC CS AI&ML"
+  },
+  {
+    "slNo": 30,
+    "rollNumber": "TU6243202111032",
+    "registerNumber": "TU6243202111032",
+    "name": "Meykandan . S",
+    "department": "BSC CS AI&ML"
+  },
+  {
+    "slNo": 31,
+    "rollNumber": "TU6243202111033",
+    "registerNumber": "TU6243202111033",
+    "name": "Narayanan . A",
+    "department": "BSC CS AI&ML"
+  },
+  {
+    "slNo": 32,
+    "rollNumber": "TU6243202111034",
+    "registerNumber": "TU6243202111034",
+    "name": "Parthiban . P",
+    "department": "BSC CS AI&ML"
+  },
+  {
+    "slNo": 33,
+    "rollNumber": "TU6243202111035",
+    "registerNumber": "TU6243202111035",
+    "name": "Poovarasan A",
+    "department": "BSC CS AI&ML"
+  },
+  {
+    "slNo": 34,
+    "rollNumber": "TU6243202111036",
+    "registerNumber": "TU6243202111036",
+    "name": "Prem M",
+    "department": "BSC CS AI&ML"
+  },
+  {
+    "slNo": 35,
+    "rollNumber": "TU6243202111037",
+    "registerNumber": "TU6243202111037",
+    "name": "Rangarajan S",
+    "department": "BSC CS AI&ML"
+  },
+  {
+    "slNo": 36,
+    "rollNumber": "TU6243202111038",
+    "registerNumber": "TU6243202111038",
+    "name": "Ranjith S A",
+    "department": "BSC CS AI&ML"
+  },
+  {
+    "slNo": 37,
+    "rollNumber": "TU6243202111039",
+    "registerNumber": "TU6243202111039",
+    "name": "Ravichandar R",
+    "department": "BSC CS AI&ML"
+  },
+  {
+    "slNo": 38,
+    "rollNumber": "TU6243202111041",
+    "registerNumber": "TU6243202111041",
+    "name": "Sasikumar P",
+    "department": "BSC CS AI&ML"
+  },
+  {
+    "slNo": 39,
+    "rollNumber": "TU6243202111042",
+    "registerNumber": "TU6243202111042",
+    "name": "Sedhu Raman S",
+    "department": "BSC CS AI&ML"
+  },
+  {
+    "slNo": 40,
+    "rollNumber": "TU6243202111043",
+    "registerNumber": "TU6243202111043",
+    "name": "Selva Ganapathy P",
+    "department": "BSC CS AI&ML"
+  },
+  {
+    "slNo": 41,
+    "rollNumber": "TU6243202111044",
+    "registerNumber": "TU6243202111044",
+    "name": "Shariadevi M",
+    "department": "BSC CS AI&ML"
+  },
+  {
+    "slNo": 42,
+    "rollNumber": "TU6243202111045",
+    "registerNumber": "TU6243202111045",
+    "name": "Shiek Abdulla A",
+    "department": "BSC CS AI&ML"
+  },
+  {
+    "slNo": 43,
+    "rollNumber": "TU6243202111046",
+    "registerNumber": "TU6243202111046",
+    "name": "Shivaji S S",
+    "department": "BSC CS AI&ML"
+  },
+  {
+    "slNo": 44,
+    "rollNumber": "TU6243202111047",
+    "registerNumber": "TU6243202111047",
+    "name": "Subiksha K",
+    "department": "BSC CS AI&ML"
+  },
+  {
+    "slNo": 45,
+    "rollNumber": "TU6243202111048",
+    "registerNumber": "TU6243202111048",
+    "name": "Sujith Kumar S",
+    "department": "BSC CS AI&ML"
+  },
+  {
+    "slNo": 46,
+    "rollNumber": "TU6243202111049",
+    "registerNumber": "TU6243202111049",
+    "name": "Tamil Selvam M",
+    "department": "BSC CS AI&ML"
+  },
+  {
+    "slNo": 47,
+    "rollNumber": "TU6243202111050",
+    "registerNumber": "TU6243202111050",
+    "name": "Tamilarasu V",
+    "department": "BSC CS AI&ML"
+  },
+  {
+    "slNo": 48,
+    "rollNumber": "TU6243202111051",
+    "registerNumber": "TU6243202111051",
+    "name": "Tamilmaran M",
+    "department": "BSC CS AI&ML"
+  },
+  {
+    "slNo": 49,
+    "rollNumber": "TU6243202111052",
+    "registerNumber": "TU6243202111052",
+    "name": "Tharika M G",
+    "department": "BSC CS AI&ML"
+  },
+  {
+    "slNo": 50,
+    "rollNumber": "TU6243202111053",
+    "registerNumber": "TU6243202111053",
+    "name": "Vetrivel D",
+    "department": "BSC CS AI&ML"
+  },
+  {
+    "slNo": 51,
+    "rollNumber": "TU6243202111054",
+    "registerNumber": "TU6243202111054",
+    "name": "Vishnu Bharathi B",
+    "department": "BSC CS AI&ML"
+  },
+  {
+    "slNo": 52,
+    "rollNumber": "TU6243202111055",
+    "registerNumber": "TU6243202111055",
+    "name": "Yasmine S",
+    "department": "BSC CS AI&ML"
+  },
+  {
+    "slNo": 53,
+    "rollNumber": "TU6243202111056",
+    "registerNumber": "TU6243202111056",
+    "name": "Madhan Kumar I",
+    "department": "BSC CS AI&ML"
+  },
+  {
+    "slNo": 54,
+    "rollNumber": "TU6243202111057",
+    "registerNumber": "TU6243202111057",
+    "name": "Ragul M",
+    "department": "BSC CS AI&ML"
+  }
+]
