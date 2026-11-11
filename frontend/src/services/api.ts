@@ -9,9 +9,15 @@ import {
   SheetConnectionConfig
 } from '../types/academic';
 
-// Resolve API base URL from Vite environment variables for production Render Static Site hosting.
-// In development or when VITE_API_BASE_URL is omitted, it defaults to relative '/api' (proxied via vite.config.ts).
-const RAW_BASE_URL = (import.meta.env.VITE_API_BASE_URL || '').trim().replace(/\/+$/, '');
+// Resolve API base URL from Vite environment variables for production Render hosting.
+// In development, if VITE_API_BASE_URL is omitted, use relative '/api' (proxied via vite.config.ts).
+// In production, fallback to the deployed backend Web Service if VITE_API_BASE_URL is not set.
+const DEFAULT_PROD_URL = 'https://analyzer-backend-f3zv.onrender.com';
+const envBase = import.meta.env.VITE_API_BASE_URL;
+const RAW_BASE_URL = (envBase && envBase.trim())
+  ? envBase.trim().replace(/\/+$/, '')
+  : (import.meta.env.PROD ? DEFAULT_PROD_URL : '');
+
 export const API_BASE = RAW_BASE_URL ? `${RAW_BASE_URL}/api` : '/api';
 
 const client = axios.create({
