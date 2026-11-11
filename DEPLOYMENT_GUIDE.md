@@ -39,7 +39,7 @@ Deploy the services in the following order:
 
 1. Log in to your [Render Dashboard](https://dashboard.render.com/).
 2. Click **New +** in the top navigation bar and select **Web Service**.
-3. Connect your GitHub repository (`Lokesh314-git/Attendance_analyzer`).
+3. Connect your GitHub repository (`Lokesh314-git/analyzer-backend`).
 4. Configure the Web Service settings as follows:
 
 | Field | Configuration Value |
@@ -92,7 +92,7 @@ You should receive a `200 OK` response:
 ## Step 2: Deploy Frontend Static Site
 
 1. In the Render Dashboard, click **New +** and select **Static Site**.
-2. Connect the same GitHub repository (`Lokesh314-git/Attendance_analyzer`).
+2. Connect the same GitHub repository (`Lokesh314-git/analyzer-backend`).
 3. Configure the Static Site settings:
 
 | Field | Configuration Value |
