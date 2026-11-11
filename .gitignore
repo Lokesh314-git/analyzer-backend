@@ -11,6 +11,9 @@ yarn-error.log*
 
 # Environment & Local Configuration
 .env
+.env.*
+!.env.example
+!.env.*.example
 .env.local
 .env.*.local
 
@@ -34,3 +37,4 @@ mobile/android/app/profile
 mobile/android/app/release
 mobile/ios/Flutter/ephemeral/
 mobile/macos/Flutter/ephemeral/
+

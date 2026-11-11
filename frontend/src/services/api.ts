@@ -9,7 +9,10 @@ import {
   SheetConnectionConfig
 } from '../types/academic';
 
-const API_BASE = '/api';
+// Resolve API base URL from Vite environment variables for production Render Static Site hosting.
+// In development or when VITE_API_BASE_URL is omitted, it defaults to relative '/api' (proxied via vite.config.ts).
+const RAW_BASE_URL = (import.meta.env.VITE_API_BASE_URL || '').trim().replace(/\/+$/, '');
+export const API_BASE = RAW_BASE_URL ? `${RAW_BASE_URL}/api` : '/api';
 
 const client = axios.create({
   baseURL: API_BASE,
@@ -166,8 +169,8 @@ export const api = {
   },
 
   // Report URLs
-  getExcelReportUrl: (cat?: CatExam) => `/api/reports/excel${cat ? `?cat=${cat}` : ''}`,
-  getPdfReportUrl: (cat: CatExam = 'CAT-1', title?: string) => `/api/reports/pdf?cat=${cat}${title ? `&title=${encodeURIComponent(title)}` : ''}`,
-  getCsvTemplateUrl: () => `/api/reports/template`
+  getExcelReportUrl: (cat?: CatExam) => `${API_BASE}/reports/excel${cat ? `?cat=${cat}` : ''}`,
+  getPdfReportUrl: (cat: CatExam = 'CAT-1', title?: string) => `${API_BASE}/reports/pdf?cat=${cat}${title ? `&title=${encodeURIComponent(title)}` : ''}`,
+  getCsvTemplateUrl: () => `${API_BASE}/reports/template`
 };
 
