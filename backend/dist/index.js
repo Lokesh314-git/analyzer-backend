@@ -23,15 +23,15 @@ const corsOptions = {
         // Allow non-browser requests (e.g. mobile apps, server-to-server, curl, health probes)
         if (!origin)
             return callback(null, true);
-        // In non-production or if FRONTEND_URL is '*', allow all origins
-        if (process.env.NODE_ENV !== 'production' || configuredOrigins.includes('*')) {
+        // If FRONTEND_URL is unset, '*', or in non-production, allow all origins
+        if (process.env.NODE_ENV !== 'production' || configuredOrigins.length === 0 || configuredOrigins.includes('*')) {
             return callback(null, true);
         }
         const cleanOrigin = origin.replace(/\/+$/, '');
         if (configuredOrigins.includes(cleanOrigin) || localOrigins.includes(cleanOrigin)) {
             return callback(null, true);
         }
-        return callback(new Error(`CORS blocked for origin: ${origin}`));
+        return callback(null, false);
     },
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'Cache-Control', 'Pragma', 'Expires'],
