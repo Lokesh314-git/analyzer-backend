@@ -28,7 +28,12 @@ const corsOptions = {
             return callback(null, true);
         }
         const cleanOrigin = origin.replace(/\/+$/, '');
-        if (configuredOrigins.includes(cleanOrigin) || localOrigins.includes(cleanOrigin)) {
+        if (
+          configuredOrigins.includes(cleanOrigin) ||
+          localOrigins.includes(cleanOrigin) ||
+          cleanOrigin.endsWith('.onrender.com') ||
+          cleanOrigin.endsWith('.vercel.app')
+        ) {
             return callback(null, true);
         }
         return callback(null, false);

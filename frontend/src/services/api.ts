@@ -9,16 +9,45 @@ import {
   SheetConnectionConfig
 } from '../types/academic';
 
-// Resolve API base URL from Vite environment variables for production Render hosting.
-// In development, if VITE_API_BASE_URL is omitted, use relative '/api' (proxied via vite.config.ts).
-// In production, fallback to the deployed backend Web Service if VITE_API_BASE_URL is not set.
-const DEFAULT_PROD_URL = 'https://analyzer-backend-f3zv.onrender.com';
-const envBase = import.meta.env.VITE_API_BASE_URL;
-const RAW_BASE_URL = (envBase && envBase.trim())
-  ? envBase.trim().replace(/\/+$/, '')
-  : (import.meta.env.PROD ? DEFAULT_PROD_URL : '');
+// Resolve API base URL from localStorage, Vite environment variables, or fallback
+export const DEFAULT_PROD_URL = 'https://analyzer-backend-f3zv.onrender.com';
 
-export const API_BASE = RAW_BASE_URL ? `${RAW_BASE_URL}/api` : '/api';
+export const getResolvedBaseUrl = (): string => {
+  if (typeof window !== 'undefined') {
+    const custom = localStorage.getItem('CUSTOM_API_BASE_URL');
+    if (custom && custom.trim()) {
+      return custom.trim().replace(/\/+$/, '');
+    }
+  }
+  const envBase = import.meta.env.VITE_API_BASE_URL;
+  if (envBase && envBase.trim()) {
+    return envBase.trim().replace(/\/+$/, '');
+  }
+  return import.meta.env.PROD ? DEFAULT_PROD_URL : '';
+};
+
+export const setCustomApiBaseUrl = (url: string) => {
+  if (typeof window !== 'undefined') {
+    if (url && url.trim()) {
+      localStorage.setItem('CUSTOM_API_BASE_URL', url.trim().replace(/\/+$/, ''));
+    } else {
+      localStorage.removeItem('CUSTOM_API_BASE_URL');
+    }
+  }
+};
+
+export const resetCustomApiBaseUrl = () => {
+  if (typeof window !== 'undefined') {
+    localStorage.removeItem('CUSTOM_API_BASE_URL');
+  }
+};
+
+export const getApiBase = (): string => {
+  const base = getResolvedBaseUrl();
+  return base ? `${base}/api` : '/api';
+};
+
+export const API_BASE = getApiBase();
 
 const client = axios.create({
   baseURL: API_BASE,
@@ -31,8 +60,10 @@ const client = axios.create({
   }
 });
 
-// Anti-cache and performance measurement interceptors
+// Anti-cache and dynamic URL routing interceptor
 client.interceptors.request.use(config => {
+  const base = getResolvedBaseUrl();
+  config.baseURL = base ? `${base}/api` : '/api';
   (config as any).metadata = { startTime: performance.now() };
   config.params = { ...config.params, _t: Date.now() };
   return config;
@@ -175,8 +206,39 @@ export const api = {
   },
 
   // Report URLs
-  getExcelReportUrl: (cat?: CatExam) => `${API_BASE}/reports/excel${cat ? `?cat=${cat}` : ''}`,
-  getPdfReportUrl: (cat: CatExam = 'CAT-1', title?: string) => `${API_BASE}/reports/pdf?cat=${cat}${title ? `&title=${encodeURIComponent(title)}` : ''}`,
-  getCsvTemplateUrl: () => `${API_BASE}/reports/template`
+  getExcelReportUrl: (cat?: CatExam) => `${getApiBase()}/reports/excel${cat ? `?cat=${cat}` : ''}`,
+  getPdfReportUrl: (cat: CatExam = 'CAT-1', title?: string) => `${getApiBase()}/reports/pdf?cat=${cat}${title ? `&title=${encodeURIComponent(title)}` : ''}`,
+  getCsvTemplateUrl: () => `${getApiBase()}/reports/template`,
+
+  // Diagnostic Health Check
+  checkBackendHealth: async (customUrl?: string): Promise<{ ok: boolean; status?: number; error?: string; service?: string }> => {
+    const targetBase = customUrl ? customUrl.trim().replace(/\/+$/, '') : getResolvedBaseUrl();
+    const url = targetBase ? `${targetBase}/health` : '/health';
+    try {
+      const res = await axios.get(url, { timeout: 8000 });
+      return { ok: true, status: res.status, service: res.data?.service };
+    } catch (err: any) {
+      if (err.response) {
+        if (err.response.headers?.['x-render-routing'] === 'no-server') {
+          return {
+            ok: false,
+            status: err.response.status,
+            error: 'Render Routing: No active Web Service found at this URL (x-render-routing: no-server). Please verify your Web Service name/URL in the Render dashboard.'
+          };
+        }
+        return {
+          ok: false,
+          status: err.response.status,
+          error: `Server responded with status ${err.response.status}`
+        };
+      }
+      return {
+        ok: false,
+        error: err.message === 'Network Error'
+          ? 'Network Error / CORS preflight blocked. The server may be offline, sleeping, or unreachable.'
+          : (err.message || 'Connection failed')
+      };
+    }
+  }
 };
 
