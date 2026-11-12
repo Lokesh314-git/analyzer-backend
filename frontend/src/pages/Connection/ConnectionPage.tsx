@@ -8,19 +8,9 @@ import {
   Code2,
   Trash2,
   ChevronDown,
-  ChevronUp,
-  Server,
-  Globe,
-  Check,
-  ExternalLink
+  ChevronUp
 } from 'lucide-react';
-import {
-  api,
-  getResolvedBaseUrl,
-  setCustomApiBaseUrl,
-  resetCustomApiBaseUrl,
-  DEFAULT_PROD_URL
-} from '../../services/api';
+import { api } from '../../services/api';
 import { useSync } from '../../context/SyncContext';
 import { SheetConnectionConfig, DataQualityIssue, SourceMethod } from '../../types/academic';
 
@@ -41,25 +31,6 @@ export const ConnectionPage: React.FC = () => {
     warnings: string[];
   } | null>(null);
   const [showAppsScriptGuide, setShowAppsScriptGuide] = useState(false);
-
-  // Backend Web Service connection state
-  const [backendUrl, setBackendUrl] = useState<string>(getResolvedBaseUrl());
-  const [backendHealth, setBackendHealth] = useState<{ ok: boolean; status?: number; error?: string; service?: string } | null>(null);
-  const [checkingBackend, setCheckingBackend] = useState<boolean>(false);
-  const [showBackendConfig, setShowBackendConfig] = useState<boolean>(false);
-
-  const verifyBackend = async (urlToTest?: string) => {
-    setCheckingBackend(true);
-    const target = urlToTest !== undefined ? urlToTest : backendUrl;
-    const result = await api.checkBackendHealth(target);
-    setBackendHealth(result);
-    setCheckingBackend(false);
-    return result;
-  };
-
-  useEffect(() => {
-    verifyBackend();
-  }, []);
 
   useEffect(() => {
     api.getConnection().then((res) => {
@@ -185,98 +156,6 @@ export const ConnectionPage: React.FC = () => {
           <span>{message.text}</span>
         </div>
       )}
-
-      {/* Backend API Diagnostics / Configuration Panel */}
-      <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-3.5 shadow-xs space-y-3">
-        <div className="flex items-center justify-between cursor-pointer" onClick={() => setShowBackendConfig(p => !p)}>
-          <div className="flex items-center gap-2">
-            <Server className="w-4 h-4 text-blue-600 shrink-0" />
-            <span className="text-xs font-semibold text-slate-800 dark:text-slate-200">
-              Backend Web Service URL
-            </span>
-            <span className={`inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-bold ${
-              backendHealth?.ok
-                ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300'
-                : 'bg-amber-100 text-amber-800 dark:bg-amber-950/60 dark:text-amber-300'
-            }`}>
-              {checkingBackend ? 'Testing...' : backendHealth?.ok ? 'Connected' : 'Offline / Unreachable'}
-            </span>
-          </div>
-          <button type="button" className="text-slate-400 hover:text-slate-600 p-1">
-            {showBackendConfig ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
-          </button>
-        </div>
-
-        {backendHealth && !backendHealth.ok && !showBackendConfig && (
-          <div className="p-2.5 rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800 text-[11px] text-amber-800 dark:text-amber-300 flex items-center justify-between gap-2">
-            <div className="flex items-center gap-1.5 overflow-hidden">
-              <AlertTriangle className="w-3.5 h-3.5 shrink-0 text-amber-600" />
-              <span className="truncate">Cannot reach backend at <code className="font-mono">{backendUrl}</code> ({backendHealth.error})</span>
-            </div>
-            <button
-              type="button"
-              onClick={() => setShowBackendConfig(true)}
-              className="font-bold underline shrink-0 hover:no-underline"
-            >
-              Change URL
-            </button>
-          </div>
-        )}
-
-        {showBackendConfig && (
-          <div className="pt-2 border-t border-slate-100 dark:border-slate-800 space-y-2.5">
-            <div>
-              <label className="block text-[11px] font-medium text-slate-600 dark:text-slate-400 mb-1">
-                Deployed Express Backend URL (from Render Dashboard)
-              </label>
-              <div className="flex flex-col sm:flex-row gap-2">
-                <input
-                  type="url"
-                  value={backendUrl}
-                  onChange={(e) => setBackendUrl(e.target.value)}
-                  placeholder="https://analyzer-backend-xxxx.onrender.com"
-                  className="flex-1 px-3 py-1.5 text-xs font-mono rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white"
-                />
-                <div className="flex items-center gap-2">
-                  <button
-                    type="button"
-                    onClick={async () => {
-                      setCustomApiBaseUrl(backendUrl);
-                      const res = await verifyBackend(backendUrl);
-                      if (res.ok) {
-                        setMessage({ type: 'success', text: `Backend successfully connected: ${backendUrl}` });
-                        triggerRefresh();
-                      } else {
-                        setMessage({ type: 'error', text: `Backend check failed: ${res.error}` });
-                      }
-                    }}
-                    disabled={checkingBackend}
-                    className="px-3 py-1.5 text-xs font-semibold rounded-lg bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 shadow-xs"
-                  >
-                    {checkingBackend ? 'Testing...' : 'Save & Test'}
-                  </button>
-                  <button
-                    type="button"
-                    onClick={async () => {
-                      resetCustomApiBaseUrl();
-                      const def = getResolvedBaseUrl();
-                      setBackendUrl(def);
-                      await verifyBackend(def);
-                      triggerRefresh();
-                    }}
-                    className="px-2.5 py-1.5 text-xs font-medium rounded-lg text-slate-600 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800"
-                  >
-                    Reset
-                  </button>
-                </div>
-              </div>
-            </div>
-            <p className="text-[11px] text-slate-500 dark:text-slate-400">
-              In Render, check the URL under the service title (e.g. <code>https://analyzer-backend-xxxx.onrender.com</code>). If Render gave your service a different subdomain, paste it here to connect immediately.
-            </p>
-          </div>
-        )}
-      </div>
 
       {/* Connection Method Selector Card */}
       <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-4 sm:p-5 shadow-xs space-y-4">

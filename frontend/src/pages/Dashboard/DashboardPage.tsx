@@ -78,16 +78,8 @@ export const DashboardPage: React.FC = () => {
           <AlertTriangle className="w-5 h-5" />
         </div>
         <div>
-          <h3 className="text-sm font-bold">Unable to Fetch Live Spreadsheet</h3>
-          <p className="text-xs text-red-600 dark:text-red-400 mt-0.5">{error}</p>
+          <h3 className="text-sm font-bold">Add spreadsheet URL in <span>Spreadsheet link</span> &gt; <strong>Spreadsheet URL</strong> section</h3>
         </div>
-        <button
-          onClick={triggerRefresh}
-          disabled={isSyncing}
-          className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-red-600 text-white text-xs font-semibold hover:bg-red-700 transition cursor-pointer touch-target-44"
-        >
-          <span>Retry Live Fetch</span>
-        </button>
       </div>
     );
   }
@@ -126,11 +118,10 @@ export const DashboardPage: React.FC = () => {
             <button
               key={cat}
               onClick={() => setActiveCat(cat)}
-              className={`px-3 py-1 text-xs font-bold rounded-md transition-all touch-target-44 flex items-center justify-center ${
-                activeCat === cat
+              className={`px-3 py-1 text-xs font-bold rounded-md transition-all touch-target-44 flex items-center justify-center ${activeCat === cat
                   ? 'bg-white dark:bg-slate-900 text-blue-600 dark:text-blue-400 shadow-xs'
                   : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
-              }`}
+                }`}
             >
               {cat}
             </button>
