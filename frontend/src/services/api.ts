@@ -10,7 +10,7 @@ import {
 } from '../types/academic';
 
 // Resolve API base URL from localStorage, Vite environment variables, or fallback
-export const DEFAULT_PROD_URL = 'https://analyzer-backend-f3zv.onrender.com';
+export const DEFAULT_PROD_URL = 'https://analyzer-backend-1.onrender.com';
 
 export const getResolvedBaseUrl = (): string => {
   if (typeof window !== 'undefined') {
